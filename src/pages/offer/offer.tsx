@@ -1,11 +1,15 @@
-import Header from '../components/header/header';
-import Map from '../components/map/map';
-import ReviewForm from '../components/review-form/review-form';
-import ReviewList from '../components/review-list/review-list';
+import {Helmet} from 'react-helmet-async';
+import Header from '../../components/header/header';
+import Map from '../../components/map/map';
+import ReviewForm from '../../components/review-form/review-form';
+import ReviewList from '../../components/review-list/review-list';
 
 function Offer(): JSX.Element {
   return (
     <div className="page">
+      <Helmet>
+        <title>6 городов. Предложения</title>
+      </Helmet>
       <Header />
       <main className="page__main page__main--offer">
         <section className="offer">

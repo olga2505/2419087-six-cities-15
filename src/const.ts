@@ -1,3 +1,10 @@
+export enum AppRoute {
+  Root = '/',
+  Offer = '/offer/:id',
+  Login = '/login',
+  Favorites = '/favorites',
+}
+
 export const Cities = [
   'Paris',
   'Cologne',
@@ -12,4 +19,10 @@ export enum OfferSortList {
   PriceLowToHigh = 'Price: low to high',
   PriceHighToLow = 'Price: high to low',
   RatingHighToLow = 'Top rated first'
+}
+
+export enum AuthorizationStatus {
+  Auth = 'AUTH',
+  NoAuth = 'NO_AUTH',
+  Unknown = 'UNKNOWN',
 }
