@@ -21,7 +21,6 @@ export enum OfferSortList {
   RatingHighToLow = 'Top rated first'
 }
 
-
 export enum AuthorizationStatus {
   Auth = 'AUTH',
   NoAuth = 'NO_AUTH',
