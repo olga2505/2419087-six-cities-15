@@ -8,14 +8,19 @@ import Login from '../../pages/login/login';
 import Favorites from '../../pages/favorites/favorites';
 import NotFound from '../../pages/not-found/not-found';
 import PrivateRoute from '../../components/private-route/private-route';
+import {OfferCardsType} from '../../types/offer';
 
-function App(): JSX.Element {
+type AppProps = {
+  offers: OfferCardsType;
+}
+
+function App({offers}: AppProps): JSX.Element {
   return (
     <HelmetProvider>
       <BrowserRouter>
         <Routes>
-          <Route path={AppRoute.Root} element={<Main />} />
-          <Route path={AppRoute.Offer} element={<Offer />} />
+          <Route path={AppRoute.Root} element={<Main offers={offers}/>} />
+          <Route path={AppRoute.Offer} element={<Offer/>} />
           <Route path={AppRoute.Login} element={<Login />} />
           <Route
             path={AppRoute.Favorites}

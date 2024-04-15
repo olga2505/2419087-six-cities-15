@@ -1,25 +1,26 @@
-import {cardProps} from './card-data';
+import { OfferCardType } from '../../types/offer';
+// import {useState} from 'react';
 
 export interface OfferCardProps {
-  card: cardProps;
+  card: OfferCardType;
   // className?: string;
 }
 
-function PlaceCard({card}: OfferCardProps): JSX.Element {
+function PlaceCard({ card }: OfferCardProps): JSX.Element {
   return (
-    <article className="cities__card place-card">
-      {
-        card.isPremium ? (
-          <div className="place-card__mark">
-            <span>Premium</span>
-          </div>
-        ) : null
-      }
+    <article
+      className="cities__card place-card"
+    >
+      {card.isPremium ? (
+        <div className="place-card__mark">
+          <span>Premium</span>
+        </div>
+      ) : null}
       <div className="cities__image-wrapper place-card__image-wrapper">
         <a href="#">
           <img
             className="place-card__image"
-            src={card.img}
+            src={card.previewImage}
             width={260}
             height={200}
             alt="Place image"
@@ -32,14 +33,17 @@ function PlaceCard({card}: OfferCardProps): JSX.Element {
             <b className="place-card__price-value">€{card.price}</b>
             <span className="place-card__price-text">/&nbsp;night</span>
           </div>
-          <button className={`place-card__bookmark-button button ${card.isFavorite ? 'place-card__bookmark-button--active' : null}`} type="button">
+          <button
+            className={`place-card__bookmark-button button ${
+              card.isFavorite ? 'place-card__bookmark-button--active' : null
+            }`}
+            type="button"
+          >
             <svg className="place-card__bookmark-icon" width={18} height={19}>
               <use xlinkHref="#icon-bookmark" />
             </svg>
             <span className="visually-hidden">To bookmarks</span>
           </button>
-
-
         </div>
         <div className="place-card__rating rating">
           <div className="place-card__stars rating__stars">

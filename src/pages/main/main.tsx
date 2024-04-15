@@ -1,9 +1,15 @@
 import {Helmet} from 'react-helmet-async';
-import {cards} from '../../components/card/card-data';
-import PlaceCard from '../../components/card/place-card';
 import Header from '../../components/header/header';
+import {OfferCardsType} from '../../types/offer';
+import OfferList from '../../components/offer-list/offer-list';
 
-function Main(): JSX.Element {
+type mainProps = {
+  offers: OfferCardsType;
+}
+
+function Main(props: mainProps): JSX.Element {
+  const {offers} = props;
+
   return (
     <div className="page page--gray page--main">
       <Helmet>
@@ -79,9 +85,9 @@ function Main(): JSX.Element {
                   </li>
                 </ul>
               </form>
-              <div className="cities__places-list places__list tabs__content">
-                {cards.map((card) => <PlaceCard card={card} key={card.id}/>)}
-              </div>
+              {
+                <OfferList offers={offers}/>
+              }
             </section>
             <div className="cities__right-section">
               <section className="cities__map map" />
