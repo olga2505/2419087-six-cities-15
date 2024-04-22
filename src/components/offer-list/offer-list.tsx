@@ -15,14 +15,17 @@ function OfferList({offers}: mainProps): JSX.Element {
   };
 
   useEffect(() => {
+    // eslint-disable-next-line
     console.log('comonent did update');
   }, [offers]);
 
   useEffect (() => {
     // сработает при монтировании
+    // eslint-disable-next-line
     console.warn(activeOffer);
 
     return () => {
+      // eslint-disable-next-line
       console.log('component will unmount');
     };
   }, []);

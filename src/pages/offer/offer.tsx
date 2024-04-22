@@ -27,7 +27,7 @@ function Offer(props: offerPageProps): JSX.Element {
     );
   }
 
-  const { title, type, price, images, city, isFavorite, isPremium, rating, listinside } = currentOffer;
+  const { title, type, price, images, isFavorite, isPremium, rating, listinside } = currentOffer;
 
   return (
     <div className="page">
