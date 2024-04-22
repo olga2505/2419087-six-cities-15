@@ -24,14 +24,14 @@ function OfferList({offers}: mainProps): JSX.Element {
 
     return () => {
       console.log('component will unmount');
-    }
-  }, [])
+    };
+  }, []);
 
 
   return (
     <div className="cities__places-list places__list tabs__content">
       {offers.map((offer) => (
-        <OfferCard card={offer} key={offer.id} handleHover={handleHover} />
+        <OfferCard card={offer} key={offer.id} handleHover={handleHover} className='cities'/>
       ))}
     </div>
   );

@@ -14,10 +14,11 @@ import { OfferPages } from '../../types/offer-page';
 type AppProps = {
   offers: OfferCardsType;
   offerPages: OfferPages;
+  favoriteList: OfferCardsType;
   authorizationStatus: AuthorizationStatus;
 }
 
-function App({offers, offerPages, authorizationStatus}: AppProps): JSX.Element {
+function App({offers, offerPages, favoriteList, authorizationStatus}: AppProps): JSX.Element {
   return (
     <HelmetProvider>
       <BrowserRouter>
@@ -29,7 +30,7 @@ function App({offers, offerPages, authorizationStatus}: AppProps): JSX.Element {
             path={AppRoute.Favorites}
             element={
               <PrivateRoute authorizationStatus={authorizationStatus}>
-                <Favorites />
+                <Favorites favoriteList={favoriteList}/>
               </PrivateRoute>
             }
           />
