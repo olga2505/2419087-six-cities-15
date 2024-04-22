@@ -1,16 +1,37 @@
-import PlaceCard from '../../components/offer-card/offer-card';
+import { useEffect, useState } from 'react';
+import OfferCard from '../../components/offer-card/offer-card';
 
-import {OfferCardsType} from '../../types/offer';
+import {OfferCardsType, OfferCardType} from '../../types/offer';
+import { Nullable } from 'vitest';
 type mainProps = {
   offers: OfferCardsType;
 }
 
-function OfferList(props: mainProps): JSX.Element {
-  const {offers} = props;
+function OfferList({offers}: mainProps): JSX.Element {
+  // const {offers} = props;
+  const [activeOffer, setActiveOffer] = useState<Nullable<OfferCardType>>(null);
+  const handleHover = (offer?: OfferCardType) => {
+    setActiveOffer(offer || null);
+  };
+
+  useEffect(() => {
+    console.log('comonent did update');
+  }, [offers]);
+
+  useEffect (() => {
+    // сработает при монтировании
+    console.warn(activeOffer);
+
+    return () => {
+      console.log('component will unmount');
+    }
+  }, [])
+
+
   return (
     <div className="cities__places-list places__list tabs__content">
       {offers.map((offer) => (
-        <PlaceCard card={offer} key={offer.id} />
+        <OfferCard card={offer} key={offer.id} handleHover={handleHover} />
       ))}
     </div>
   );

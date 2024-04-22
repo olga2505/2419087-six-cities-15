@@ -2,7 +2,7 @@ import {OfferCardsType} from '../types/offer';
 
 export const offers: OfferCardsType = [
   {
-    id: '6af6f711-c28d-4121-82cd-e0b462a27f00',
+    id: '1',
     title: 'Beautiful & luxurious studio at great location',
     type: 'apartment',
     price: 120,
@@ -22,10 +22,10 @@ export const offers: OfferCardsType = [
     isFavorite: false,
     isPremium: false,
     rating: 80,
-    previewImage: '../../../markup/img/apartment-01.jpg',
+    previewImage: 'img/apartment-01.jpg',
   },
   {
-    id: '6af6f711-c28d-4121-82cd-e0b462a27f01',
+    id: '2',
     title: 'Wood and stone place',
     type: 'room',
     price: 80,
@@ -45,10 +45,10 @@ export const offers: OfferCardsType = [
     isFavorite: false,
     isPremium: false,
     rating: 80,
-    previewImage: '../../../markup/img/apartment-02.jpg',
+    previewImage: 'img/apartment-02.jpg',
   },
   {
-    id: '6af6f711-c28d-4121-82cd-e0b462a27f02',
+    id: '3',
     title: 'Canal View Prinsengracht',
     type: 'apartment',
     price: 132,
@@ -68,10 +68,10 @@ export const offers: OfferCardsType = [
     isFavorite: false,
     isPremium: false,
     rating: 80,
-    previewImage: '../../../markup/img/apartment-03.jpg',
+    previewImage: 'img/apartment-03.jpg',
   },
   {
-    id: '6af6f711-c28d-4121-82cd-e0b462a27f03',
+    id: '4',
     title: 'Nice, cozy, warm big bed apartmentn',
     type: 'apartment',
     price: 180,
@@ -91,6 +91,6 @@ export const offers: OfferCardsType = [
     isFavorite: false,
     isPremium: false,
     rating: 80,
-    previewImage: '../../../markup/img/apartment-01.jpg',
+    previewImage: 'img/apartment-01.jpg',
   },
 ];
