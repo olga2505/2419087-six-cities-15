@@ -1,14 +1,26 @@
+import {MouseEvent} from 'react';
 import { useEffect, useState } from 'react';
 import OfferCard from '../../components/offer-card/offer-card';
 
 import {OfferCardsType, OfferCardType} from '../../types/offer';
+// import {Point} from '../../types/location';
 import { Nullable } from 'vitest';
-type mainProps = {
+type MainProps = {
   offers: OfferCardsType;
+  onListItemHover: (listItemName: string) => void;
 }
 
-function OfferList({offers}: mainProps): JSX.Element {
-  // const {offers} = props;
+function OfferList(props: MainProps): JSX.Element {
+  const {offers, onListItemHover} = props;
+
+  const handleListItemHover = (event: MouseEvent<HTMLLIElement>) => {
+    event.preventDefault();
+    const id = event.currentTarget.querySelector('[data-id]')?.getAttribute('data-id');
+    if (typeof id === 'string') {
+      onListItemHover(id);
+    }
+  };
+
   const [activeOffer, setActiveOffer] = useState<Nullable<OfferCardType>>(null);
   const handleHover = (offer?: OfferCardType) => {
     setActiveOffer(offer || null);
@@ -34,7 +46,10 @@ function OfferList({offers}: mainProps): JSX.Element {
   return (
     <div className="cities__places-list places__list tabs__content">
       {offers.map((offer) => (
-        <OfferCard card={offer} key={offer.id} handleHover={handleHover} className='cities'/>
+        <li key={offer.id} onMouseEnter={handleListItemHover} >
+
+          <OfferCard card={offer} handleHover={handleHover} className='cities'/>
+        </li>
       ))}
     </div>
   );

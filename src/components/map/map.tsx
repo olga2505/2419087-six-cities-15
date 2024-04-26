@@ -11,6 +11,7 @@ type propsMap = {
   classWrapper?: string;
   city: LocationType;
   points: Point[];
+  selectedPoint: Point | undefined;
 }
 
 const defaultCustomIcon = new Icon({
@@ -25,24 +26,48 @@ const currentCustomIcon = new Icon({
   iconAnchor: [20, 40]
 });
 
-function Map({ classWrapper, city, points }: propsMap): JSX.Element {
+function Map({ classWrapper, city, points, selectedPoint }: propsMap): JSX.Element {
   const mapRef = useRef(null);
   const map = useMap(mapRef, city);
 
   useEffect(() => {
     if (map) {
+      const markerLayer = layerGroup().addTo(map);
       points.forEach((point) => {
-        leaflet
-          .marker({
-            lat: point.latitude,
-            lng: point.longitude,
-          }, {
-            icon: defaultCustomIcon,
-          })
-          .addTo(map);
+        const marker = new Marker({
+          lat: point.latitude,
+          lng: point.longitude,
+        });
+
+        marker
+          .setIcon(
+            selectedPoint !== undefined && point.id === selectedPoint.id
+              ? currentCustomIcon
+              : defaultCustomIcon
+          )
+          .addTo(markerLayer);
       });
+
+      return () => {
+        map.removeLayer(markerLayer);
+      };
     }
-  }, [map, points]);
+  }, [map, points, selectedPoint]);
+
+  // useEffect(() => {
+  //   if (map) {
+  //     points.forEach((point) => {
+  //       leaflet
+  //         .marker({
+  //           lat: point.latitude,
+  //           lng: point.longitude,
+  //         }, {
+  //           icon: defaultCustomIcon,
+  //         })
+  //         .addTo(map);
+  //     });
+  //   }
+  // }, [map, points]);
 
 
   return (

@@ -30,6 +30,7 @@ function OfferCard({ card, className = '', handleHover }: OfferCardProps): JSX.E
       }
       onMouseEnter={handleMauseOn}
       onMouseLeave={handleMauseOff}
+      data-id={card.id}
     >
       {card.isPremium ? (
         <div className="place-card__mark">
