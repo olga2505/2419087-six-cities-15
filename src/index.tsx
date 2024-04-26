@@ -5,6 +5,7 @@ import { offers } from './mocks/offers';
 import { offerPages } from './mocks/offer-page';
 import { favoriteList } from './mocks/favorite-list';
 import { AuthorizationStatus } from './const';
+import { naerOffers } from './mocks/near-offer';
 
 const authorizationStatus = AuthorizationStatus.Auth;
 // const authorizationStatus = AuthorizationStatus.NoAuth;
@@ -20,6 +21,7 @@ root.render(
       offerPages= {offerPages}
       authorizationStatus = {authorizationStatus}
       favoriteList={favoriteList}
+      naerOffers={naerOffers}
     />
   </React.StrictMode>
 );

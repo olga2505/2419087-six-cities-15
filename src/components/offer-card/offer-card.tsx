@@ -7,7 +7,7 @@ import { getCardPath } from '../../helpers/offers';
 export interface OfferCardProps {
   card: OfferCardType;
   className?: string;
-  onMouseEnter: (listItemName: string) => void;
+  onMouseEnter?: (listItemName: string) => void;
 }
 
 function OfferCard({ card, className = '', onMouseEnter }: OfferCardProps): JSX.Element {
