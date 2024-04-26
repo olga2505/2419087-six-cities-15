@@ -13,42 +13,47 @@ type MainProps = {
 function OfferList(props: MainProps): JSX.Element {
   const {offers, onListItemHover} = props;
 
-  const handleListItemHover = (event: MouseEvent<HTMLLIElement>) => {
-    event.preventDefault();
-    const id = event.currentTarget.querySelector('[data-id]')?.getAttribute('data-id');
-    if (typeof id === 'string') {
-      onListItemHover(id);
-    }
-  };
+  // const handleListItemHover = (event: MouseEvent<HTMLLIElement>) => {
+  //   event.preventDefault();
+  //   const id = event.currentTarget.querySelector('[data-id]')?.getAttribute('data-id');
+  //   if (typeof id === 'string') {
+  //     onListItemHover(id);
+  //   }
+  // };
 
-  const [activeOffer, setActiveOffer] = useState<Nullable<OfferCardType>>(null);
-  const handleHover = (offer?: OfferCardType) => {
-    setActiveOffer(offer || null);
-  };
+  // const [activeOffer, setActiveOffer] = useState<Nullable<OfferCardType>>(null);
+  // const handleHover = (offer?: OfferCardType) => {
+  //   setActiveOffer(offer || null);
+  // };
 
-  useEffect(() => {
-    // eslint-disable-next-line
-    console.log('comonent did update');
-  }, [offers]);
+  // useEffect(() => {
+  //   // eslint-disable-next-line
+  //   console.log('comonent did update');
+  // }, [offers]);
 
-  useEffect (() => {
-    // сработает при монтировании
-    // eslint-disable-next-line
-    console.warn(activeOffer);
+  // useEffect (() => {
+  //   // сработает при монтировании
+  //   // eslint-disable-next-line
+  //   // console.warn(activeOffer);
 
-    return () => {
-      // eslint-disable-next-line
-      console.log('component will unmount');
-    };
-  }, []);
+  //   return () => {
+  //     // eslint-disable-next-line
+  //     console.log('component will unmount');
+  //   };
+  // }, []);
 
 
   return (
     <div className="cities__places-list places__list tabs__content">
       {offers.map((offer) => (
-        <li key={offer.id} onMouseEnter={handleListItemHover} >
+        <li key={offer.id} >
 
-          <OfferCard card={offer} handleHover={handleHover} className='cities'/>
+          <OfferCard
+            card={offer}
+            // handleHover={handleHover}
+            className='cities'
+            onMouseEnter={onListItemHover}
+          />
         </li>
       ))}
     </div>
