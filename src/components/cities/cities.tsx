@@ -1,9 +1,8 @@
 import { useState } from 'react';
 import OfferList from '../../components/offer-list/offer-list';
 import { CITY, POINTS } from '../../mocks/location';
-import {OfferCardsType} from '../../types/offer';
+import {OfferCardsType, OfferCardType} from '../../types/offer';
 import Map from '../map/map';
-import {Point} from '../../types/location';
 
 type citiesProps = {
   offers: OfferCardsType;
@@ -11,18 +10,15 @@ type citiesProps = {
 
 function Cities(props: citiesProps): JSX.Element {
   const {offers} = props;
-  const [selectedPoint, setSelectedPoint] = useState<Point | undefined>(
+  const [selectedPoint, setSelectedPoint] = useState<OfferCardType | undefined>(
     undefined
   );
 
   const handleListItemHover = (listItemName: string) => {
     const currentPoint = offers.find((point) => point.id === listItemName);
-    // console.log(offers);
-    // console.log(listItemName);
-
-
     setSelectedPoint(currentPoint);
   };
+
 
   return (
     <div className="cities">

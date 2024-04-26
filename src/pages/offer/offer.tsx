@@ -8,7 +8,7 @@ import Reviews from '../../components/reviews/reviews';
 import { OfferPages, OfferPage } from '../../types/offer-page';
 import NotFound from '../not-found/not-found';
 import { AuthorizationStatus } from '../../const';
-import { CITY } from '../../mocks/location';
+import { CITY, POINTS } from '../../mocks/location';
 
 type offerPageProps = {
   offerPages: OfferPages;
@@ -138,7 +138,7 @@ function Offer(props: offerPageProps): JSX.Element {
               </section>
             </div>
           </div>
-          <Map classWrapper={'offer'} city={CITY}/>
+          <Map classWrapper={'offer'} city={CITY} points={POINTS}/>
         </section>
         <div className="container">
           <section className="near-places places">

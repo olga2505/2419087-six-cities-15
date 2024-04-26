@@ -1,9 +1,9 @@
 import {useRef, useEffect} from 'react';
 import classNames from 'classnames';
 import {Icon, Marker, layerGroup} from 'leaflet';
-// import leaflet from 'leaflet';
 import 'leaflet/dist/leaflet.css';
 import {LocationType, Point} from '../../types/location';
+import {OfferCardType} from '../../types/offer';
 import useMap from './../../hooks/use-map';
 import {URL_MARKER_DEFAULT, URL_MARKER_CURRENT} from '../../const';
 
@@ -11,7 +11,7 @@ type propsMap = {
   classWrapper?: string;
   city: LocationType;
   points: Point[];
-  selectedPoint: Point | undefined;
+  selectedPoint?: OfferCardType | undefined;
 }
 
 const defaultCustomIcon = new Icon({
