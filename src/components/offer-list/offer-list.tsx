@@ -1,25 +1,33 @@
+import classNames from 'classnames';
 import OfferCard from '../../components/offer-card/offer-card';
 import {OfferCardsType} from '../../types/offer';
 
 type MainProps = {
   offers: OfferCardsType;
-  onListItemHover: (listItemName: string) => void;
+  className?: string;
+  classNameList?: string;
+  onListItemHover?: (listItemName: string) => void;
 }
 
 function OfferList(props: MainProps): JSX.Element {
-  const {offers, onListItemHover} = props;
+  const {offers, onListItemHover, className, classNameList} = props;
 
   return (
-    <div className="cities__places-list places__list tabs__content">
+    <div
+      className={
+        classNames({
+          [`${classNameList}`]: classNameList,
+          'places__list tabs__content': true,
+        })
+      }
+    >
       {offers.map((offer) => (
-        <li key={offer.id} >
-
-          <OfferCard
-            card={offer}
-            className='cities'
-            onMouseEnter={onListItemHover}
-          />
-        </li>
+        <OfferCard
+          card={offer}
+          className={className}
+          onMouseEnter={onListItemHover}
+          key={offer.id}
+        />
       ))}
     </div>
   );

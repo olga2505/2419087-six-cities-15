@@ -53,7 +53,7 @@ function Cities(props: citiesProps): JSX.Element {
             </ul>
           </form>
           {
-            <OfferList offers={offers} onListItemHover={handleListItemHover}/>
+            <OfferList offers={offers} onListItemHover={handleListItemHover} className="cities" classNameList="cities__places-list tabs__content"/>
           }
         </section>
         <div className="cities__right-section">
