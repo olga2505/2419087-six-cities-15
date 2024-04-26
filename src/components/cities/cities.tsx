@@ -1,5 +1,7 @@
 import OfferList from '../../components/offer-list/offer-list';
+import { CITY, POINTS } from '../../mocks/location';
 import {OfferCardsType} from '../../types/offer';
+import Map from '../map/map';
 
 type citiesProps = {
   offers: OfferCardsType;
@@ -7,6 +9,10 @@ type citiesProps = {
 
 function Cities(props: citiesProps): JSX.Element {
   const {offers} = props;
+  // const [selectedPoint, setSelectedPoint] = useState({});
+
+  // const handleListItemHover = (listItemName) => {};
+
   return (
     <div className="cities">
       <div className="cities__places-container container">
@@ -44,7 +50,7 @@ function Cities(props: citiesProps): JSX.Element {
           }
         </section>
         <div className="cities__right-section">
-          <section className="cities__map map" />
+          <Map classWrapper='cities' city={CITY} points={POINTS}/>
         </div>
       </div>
     </div>

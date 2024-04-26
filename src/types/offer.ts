@@ -11,11 +11,6 @@ export type OfferCardType = {
       zoom: number;
     };
   };
-  location: {
-    latitude: number;
-    longitude: number;
-    zoom: number;
-  };
   isFavorite: boolean;
   isPremium: boolean;
   rating: number;

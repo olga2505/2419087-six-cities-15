@@ -1,6 +1,60 @@
-function Map(): JSX.Element {
+import {useRef, useEffect} from 'react';
+import classNames from 'classnames';
+import {Icon, Marker, layerGroup} from 'leaflet';
+import leaflet from 'leaflet';
+import 'leaflet/dist/leaflet.css';
+import {LocationType, Point} from '../../types/location';
+import useMap from './../../hooks/use-map';
+import {URL_MARKER_DEFAULT, URL_MARKER_CURRENT} from '../../const';
+
+type propsMap = {
+  classWrapper?: string;
+  city: LocationType;
+  points: Point[];
+}
+
+const defaultCustomIcon = new Icon({
+  iconUrl: URL_MARKER_DEFAULT,
+  iconSize: [40, 40],
+  iconAnchor: [20, 40]
+});
+
+const currentCustomIcon = new Icon({
+  iconUrl: URL_MARKER_CURRENT,
+  iconSize: [40, 40],
+  iconAnchor: [20, 40]
+});
+
+function Map({ classWrapper, city, points }: propsMap): JSX.Element {
+  const mapRef = useRef(null);
+  const map = useMap(mapRef, city);
+
+  useEffect(() => {
+    if (map) {
+      points.forEach((point) => {
+        leaflet
+          .marker({
+            lat: point.latitude,
+            lng: point.longitude,
+          }, {
+            icon: defaultCustomIcon,
+          })
+          .addTo(map);
+      });
+    }
+  }, [map, points]);
+
+
   return (
-    <section className="offer__map map" />
+    <section className={
+      classNames(
+        'map',
+        {[`${classWrapper}__map`]: classWrapper }
+      )
+    }
+
+    ref={mapRef}
+    />
   );
 }
 
