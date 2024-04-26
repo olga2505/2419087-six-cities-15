@@ -16,15 +16,16 @@ type AppProps = {
   offerPages: OfferPages;
   favoriteList: OfferCardsType;
   authorizationStatus: AuthorizationStatus;
+  naerOffers: OfferCardsType;
 }
 
-function App({offers, offerPages, favoriteList, authorizationStatus}: AppProps): JSX.Element {
+function App({offers, offerPages, favoriteList, authorizationStatus, naerOffers}: AppProps): JSX.Element {
   return (
     <HelmetProvider>
       <BrowserRouter>
         <Routes>
           <Route path={AppRoute.Root} element={<Main offers={offers}/>} />
-          <Route path={AppRoute.Offer} element={<Offer offerPages={offerPages} authorizationStatus={authorizationStatus}/>} />
+          <Route path={AppRoute.Offer} element={<Offer offerPages={offerPages} authorizationStatus={authorizationStatus} naerOffers={naerOffers}/>} />
           <Route path={AppRoute.Login} element={<Login />} />
           <Route
             path={AppRoute.Favorites}
