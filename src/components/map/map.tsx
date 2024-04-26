@@ -1,7 +1,7 @@
 import {useRef, useEffect} from 'react';
 import classNames from 'classnames';
 import {Icon, Marker, layerGroup} from 'leaflet';
-import leaflet from 'leaflet';
+// import leaflet from 'leaflet';
 import 'leaflet/dist/leaflet.css';
 import {LocationType, Point} from '../../types/location';
 import useMap from './../../hooks/use-map';
@@ -16,14 +16,14 @@ type propsMap = {
 
 const defaultCustomIcon = new Icon({
   iconUrl: URL_MARKER_DEFAULT,
-  iconSize: [40, 40],
-  iconAnchor: [20, 40]
+  iconSize: [40, 55],
+  iconAnchor: [20, 55]
 });
 
 const currentCustomIcon = new Icon({
   iconUrl: URL_MARKER_CURRENT,
-  iconSize: [40, 40],
-  iconAnchor: [20, 40]
+  iconSize: [40, 55],
+  iconAnchor: [20, 55]
 });
 
 function Map({ classWrapper, city, points, selectedPoint }: propsMap): JSX.Element {
@@ -53,22 +53,6 @@ function Map({ classWrapper, city, points, selectedPoint }: propsMap): JSX.Eleme
       };
     }
   }, [map, points, selectedPoint]);
-
-  // useEffect(() => {
-  //   if (map) {
-  //     points.forEach((point) => {
-  //       leaflet
-  //         .marker({
-  //           lat: point.latitude,
-  //           lng: point.longitude,
-  //         }, {
-  //           icon: defaultCustomIcon,
-  //         })
-  //         .addTo(map);
-  //     });
-  //   }
-  // }, [map, points]);
-
 
   return (
     <section className={
