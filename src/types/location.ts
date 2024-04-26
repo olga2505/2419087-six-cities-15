@@ -6,10 +6,15 @@ export interface LocationType {
   zoom: number;
 }
 
-export type CityNameType = typeof Cities[number];
-
-export interface CityType {
-  name: CityNameType;
-  location: LocationType;
+export interface Point {
+  id: string;
+  latitude: number;
+  longitude: number;
 }
 
+export type CityNameType = typeof Cities[number];
+
+// export interface CityType {
+//   name: CityNameType;
+//   location: LocationType;
+// }

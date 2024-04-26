@@ -1,23 +1,23 @@
+import {MouseEvent} from 'react';
 import { Link } from 'react-router-dom';
+import classNames from 'classnames';
 import { OfferCardType } from '../../types/offer';
 import { getCardPath } from '../../helpers/offers';
-import classNames from 'classnames';
-// import {useState} from 'react';
 
 export interface OfferCardProps {
   card: OfferCardType;
   className?: string;
-  handleHover: (offer: OfferCardType) => void;
-  // className?: string;
+  onMouseEnter: (listItemName: string) => void;
 }
 
-function OfferCard({ card, className = '', handleHover }: OfferCardProps): JSX.Element {
-  const handleMauseOn = () => {
-    handleHover(card);
-  };
+function OfferCard({ card, className = '', onMouseEnter }: OfferCardProps): JSX.Element {
+  const handleListItemHover = (event: MouseEvent<HTMLLIElement>) => {
+    event.preventDefault();
+    const id = event.currentTarget.getAttribute('data-id');
 
-  const handleMauseOff = () => {
-    handleHover();
+    if (typeof id === 'string') {
+      onMouseEnter(id);
+    }
   };
 
   return (
@@ -28,8 +28,8 @@ function OfferCard({ card, className = '', handleHover }: OfferCardProps): JSX.E
           'place-card': true,
         })
       }
-      onMouseEnter={handleMauseOn}
-      onMouseLeave={handleMauseOff}
+      onMouseEnter={handleListItemHover}
+      data-id={card.id}
     >
       {card.isPremium ? (
         <div className="place-card__mark">
