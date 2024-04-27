@@ -1,14 +1,17 @@
+import {useState} from 'react';
 import {Cities, DEFAULT_CITY} from '../../const';
 import classNames from 'classnames';
 import {CityNameType} from '../../types/location';
 
 
 function CityFilter(): JSX.Element {
-  const currentCity = DEFAULT_CITY;
+
+  const [currentCity, setCurrentCity] = useState<CityNameType | null>(DEFAULT_CITY);
 
   const handleCityClick = (event:React.MouseEvent<HTMLElement>, city: CityNameType) => {
     event.preventDefault();
-    // changeCity({city});
+
+    setCurrentCity(city);
   };
 
   return (
@@ -19,10 +22,6 @@ function CityFilter(): JSX.Element {
             (
               <li className="locations__item" key={city} data-testid='city-filter-item'>
                 <a
-                  // className={
-                  //   classNames('locations__item-link tabs__item',
-                  //     {'tabs__item--active': DEFAULT_CITY === city})
-                  // }
                   className={
                     classNames('locations__item-link tabs__item', {'tabs__item--active': currentCity === city})
                   }
