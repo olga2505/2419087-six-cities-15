@@ -142,7 +142,7 @@ function Offer(props: offerPageProps): JSX.Element {
               </section>
             </div>
           </div>
-          <Map classWrapper={'offer'} city={CITY} points={POINTS}/>
+          {/* <Map classWrapper={'offer'} city={CITY} points={POINTS}/> */}
         </section>
         <div className="container">
           <section className="near-places places">

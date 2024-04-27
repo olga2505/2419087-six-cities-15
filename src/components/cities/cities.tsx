@@ -57,7 +57,8 @@ function Cities(props: citiesProps): JSX.Element {
           }
         </section>
         <div className="cities__right-section">
-          <Map classWrapper='cities' city={CITY} points={POINTS} selectedPoint={selectedPoint}/>
+          <Map classWrapper='cities' city={CITY} offers={offers} selectedPoint={selectedPoint}/>
+          {/* <Map classWrapper='cities' city={CITY} points={POINTS} selectedPoint={selectedPoint}/> */}
         </div>
       </div>
     </div>
