@@ -11,6 +11,7 @@ import { AuthorizationStatus } from '../../const';
 import { CITY, POINTS } from '../../mocks/location';
 import {OfferCardsType} from '../../types/offer';
 import OfferCard from '../../components/offer-card/offer-card';
+import OfferList from '../../components/offer-list/offer-list';
 
 type offerPageProps = {
   offerPages: OfferPages;
@@ -141,22 +142,16 @@ function Offer(props: offerPageProps): JSX.Element {
               </section>
             </div>
           </div>
-          <Map classWrapper={'offer'} city={CITY} points={POINTS}/>
+          {/* <Map classWrapper={'offer'} city={CITY} points={POINTS}/> */}
         </section>
         <div className="container">
           <section className="near-places places">
             <h2 className="near-places__title">
           Other places in the neighbourhood
             </h2>
-            <div className="near-places__list places__list">
-              {naerOffers.map((offer) => (
-                <OfferCard
-                  card={offer}
-                  className='near-places'
-                  key={offer.id}
-                />
-              ))}
-            </div>
+            {
+              <OfferList offers={naerOffers} className="near-places" classNameList="near-places__list"/>
+            }
           </section>
         </div>
       </main>

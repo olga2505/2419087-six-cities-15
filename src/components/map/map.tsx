@@ -2,7 +2,7 @@ import {useRef, useEffect} from 'react';
 import classNames from 'classnames';
 import {Icon, Marker, layerGroup} from 'leaflet';
 import 'leaflet/dist/leaflet.css';
-import {LocationType, Point} from '../../types/location';
+import {LocationType} from '../../types/location';
 import {OfferCardType} from '../../types/offer';
 import useMap from './../../hooks/use-map';
 import {URL_MARKER_DEFAULT, URL_MARKER_CURRENT} from '../../const';
@@ -10,7 +10,7 @@ import {URL_MARKER_DEFAULT, URL_MARKER_CURRENT} from '../../const';
 type propsMap = {
   classWrapper?: string;
   city: LocationType;
-  points: Point[];
+  offers: OfferCardType[];
   selectedPoint?: OfferCardType | undefined;
 }
 
@@ -26,22 +26,23 @@ const currentCustomIcon = new Icon({
   iconAnchor: [20, 55]
 });
 
-function Map({ classWrapper, city, points, selectedPoint }: propsMap): JSX.Element {
+function Map({ classWrapper, city, offers, selectedPoint }: propsMap): JSX.Element {
   const mapRef = useRef(null);
   const map = useMap(mapRef, city);
+
 
   useEffect(() => {
     if (map) {
       const markerLayer = layerGroup().addTo(map);
-      points.forEach((point) => {
+      offers.forEach((offer) => {
         const marker = new Marker({
-          lat: point.latitude,
-          lng: point.longitude,
+          lat: offer.city.location.latitude,
+          lng: offer.city.location.longitude,
         });
 
         marker
           .setIcon(
-            selectedPoint !== undefined && point.id === selectedPoint.id
+            selectedPoint !== undefined && offer.id === selectedPoint.id
               ? currentCustomIcon
               : defaultCustomIcon
           )
@@ -52,7 +53,7 @@ function Map({ classWrapper, city, points, selectedPoint }: propsMap): JSX.Eleme
         map.removeLayer(markerLayer);
       };
     }
-  }, [map, points, selectedPoint]);
+  }, [map, offers, selectedPoint]);
 
   return (
     <section className={

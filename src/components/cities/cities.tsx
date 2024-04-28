@@ -53,11 +53,12 @@ function Cities(props: citiesProps): JSX.Element {
             </ul>
           </form>
           {
-            <OfferList offers={offers} onListItemHover={handleListItemHover}/>
+            <OfferList offers={offers} onListItemHover={handleListItemHover} className="cities" classNameList="cities__places-list tabs__content"/>
           }
         </section>
         <div className="cities__right-section">
-          <Map classWrapper='cities' city={CITY} points={POINTS} selectedPoint={selectedPoint}/>
+          <Map classWrapper='cities' city={CITY} offers={offers} selectedPoint={selectedPoint}/>
+          {/* <Map classWrapper='cities' city={CITY} points={POINTS} selectedPoint={selectedPoint}/> */}
         </div>
       </div>
     </div>

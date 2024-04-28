@@ -1,3 +1,5 @@
+import {CityNameType} from './types/location';
+
 export enum AppRoute {
   Root = '/',
   Offer = '/offer/:id',
@@ -6,13 +8,15 @@ export enum AppRoute {
 }
 
 export const Cities = [
-  'Amsterdam',
-  'Brussels',
-  'Cologne',
-  'Dusseldorf',
-  'Hamburg',
   'Paris',
+  'Cologne',
+  'Brussels',
+  'Amsterdam',
+  'Hamburg',
+  'Dusseldorf',
 ] as const;
+
+export const DEFAULT_CITY: CityNameType = 'Paris' as const;
 
 export enum OfferSortList {
   Default = 'Popular',

@@ -10,7 +10,7 @@ function useMap(
   const isRenderedRef = useRef<boolean>(false);
 
 
-  useEffect(() => {
+  useEffect((): void => {
     if (mapRef.current !== null && !isRenderedRef.current) {
       const instance = new Map(mapRef.current, {
         center: {
